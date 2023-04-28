@@ -17,6 +17,15 @@ const concerts = [
     location:"Chicago, IL",
     photo:"https://www.coca-colacompany.com/content/dam/journey/us/en/articles/mobile/drake-all-blur-tour.jpg"
   },
+  {
+    id: "concert3",
+    name:"BORN PINK World Tour",
+    venue:"Oracle Park",
+    artists: "Blackpink",
+    date:"August 22th",
+    location:"San Francisco",
+    photo:"https://aegwebprod.blob.core.windows.net/content/blackpink-stadium-tour/non-localized-mobile.jpg"
+  },
 ];
 
 export {concerts}
