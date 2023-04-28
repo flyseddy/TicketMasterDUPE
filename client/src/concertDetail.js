@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { GET_CONCERT } from "./queries";
@@ -31,7 +31,7 @@ export const ConcertDetail = () => {
         <Typography><strong>Location</strong>: {concert.location}</Typography>
         <Typography><strong>Venue</strong>: {concert.venue}</Typography>
         <Link to={`/concertDetail/edit/${id}`} state={{name: concert.name,artists:concert.artists, date: concert.date, photo: concert.photo, lcoation:concert.location}}>
-          Edit
+          <Button>Add to Cart</Button>
         </Link>
       </Grid>
 
