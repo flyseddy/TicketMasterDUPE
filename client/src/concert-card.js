@@ -1,19 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from '@emotion/styled';
 import { blue, green, grey, pink } from '@mui/material/colors';
+import { IconButton, CardActions, Card, Dialog, DialogActions, DialogContent, DialogTitle, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-//import { colors, mq } from '../styles';
+import { Delete } from '@mui/icons-material';
+import { deleteconcert } from './mutations';
+import { useMutation } from "@apollo/client";
 
-/**
- * Pet Card component renders basic info in a card format
- * for each track populating the tracks grid homepage.
- */
+
 export const ConcertCard = ({ concert }) => {
   const { id, name, venue, artists, date, location, photo } = concert;
 
+
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
+  const [deleteConcert, deleteResult] = useMutation(deleteconcert, {
+    variables: { deleteconcertId: id },
+    refetchQueries: ["concerts"],
+    onCompleted: () => {
+      setConfirmDelete(false);
+    },
+  });
+
+  const handleDelete = async () => {
+    await deleteConcert();
+    setConfirmDelete(false);
+  };
+
   return (
+    <>
+    <Card>
     <Link to={`/concertDetail/${id}`}>
-    <CardContainer>
+    {/* <CardContainer> */}
       <CardContent>
         <CardImageContainer>
           <CardImage src={photo} alt={name} />
@@ -27,31 +45,56 @@ export const ConcertCard = ({ concert }) => {
           </CardFooter> */}
         </CardBody>
       </CardContent>
-    </CardContainer>
-    </Link>
+      </Link>
+
+
+      <CardActions>
+      <IconButton onClick = {() => setConfirmDelete(true)}>
+        <Delete/>
+      </IconButton>
+      </CardActions>
+      </Card>
+      <Dialog open={confirmDelete} onClose={() => setConfirmDelete(false)}>
+      <DialogTitle>Confirm Delete</DialogTitle>
+      <DialogContent>
+        <Typography>
+          Are you sure you wish to delete '{name}'?
+        </Typography>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setConfirmDelete(false)}>
+          Cancel
+        </Button>
+        <Button onClick={() => handleDelete()}>
+          Confirm
+        </Button>
+      </DialogActions>
+    </Dialog>
+    {/* </CardContainer> */}
+    </>
   );
 };
 
 
 /** Track Card styled components */
-const CardContainer = styled.div({
-  borderRadius: 6,
-  backgroundSize: 'cover',
-  backgroundColor: 'white',
-  boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.15)',
-  backgroundPosition: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  height: 380,
-  margin: 10,
-  overflow: 'hidden',
-  position: 'relative',
-  ':hover': {
-    backgroundColor: green[600]
-  },
-  cursor: 'pointer',
-});
+// const CardContainer = styled.div({
+//   borderRadius: 6,
+//   backgroundSize: 'cover',
+//   backgroundColor: 'white',
+//   boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.15)',
+//   backgroundPosition: 'center',
+//   display: 'flex',
+//   flexDirection: 'column',
+//   justifyContent: 'space-between',
+//   height: 380,
+//   margin: 10,
+//   overflow: 'hidden',
+//   position: 'relative',
+//   ':hover': {
+//     backgroundColor: green[600]
+//   },
+//   cursor: 'pointer',
+// });
 
 const CardContent = styled.div({
   display: 'flex',

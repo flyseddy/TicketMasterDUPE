@@ -26,5 +26,10 @@ export const typeDefs = gql`
     location: String!
     photo: String!
   }
+
+  type Mutation {
+    deleteconcert(id: ID!): BaseResponse
+  }
+  
 `;
 
