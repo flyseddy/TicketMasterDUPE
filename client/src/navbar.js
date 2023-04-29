@@ -7,6 +7,7 @@ import {
 
 import { Link } from "react-router-dom";
 
+
   
 function Navbar() {
 
@@ -18,7 +19,7 @@ function Navbar() {
         </Typography>
           <div >
             <Typography variant="h6" alight="right">
-            <Link to="/addPerson" >Shopping Cart</Link>
+            <Link to="/shoppingCart" >Shopping Cart</Link>
             </Typography>
           </div>
       </Toolbar>
