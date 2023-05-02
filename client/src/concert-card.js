@@ -30,7 +30,7 @@ export const ConcertCard = ({ concert }) => {
   return (
     <>
     <Card>
-    <Link to={`/concertDetail/${id}`}>
+    <Link to={`/concertDetail/${id}`} state={{id: id, name: name,venue:venue, artists: artists, date: date, location:location, photo: photo}}>
     {/* <CardContainer> */}
       <CardContent>
         <CardImageContainer>

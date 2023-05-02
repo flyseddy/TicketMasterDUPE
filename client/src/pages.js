@@ -5,6 +5,7 @@ import { Concerts }  from './concerts';
 import { ConcertDetail } from './concertDetail';
 import Login from './components/Login/Login';
 import useToken from './useToken';
+import { ShoppingCart } from './shoppingCart';
 
 function setToken(userToken) {
   sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -27,10 +28,9 @@ export function Pages() {
     <BrowserRouter>
       <Routes>
         <Route element={<Concerts />} path="/" />
+        <Route element={<ShoppingCart />} path='/shoppingCart'/>
         <Route path="concertDetail">
             <Route element={<ConcertDetail />} path=":id" />
-            <Route path='edit'>
-            </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -24,3 +24,15 @@ query Concert($concertId: ID!) {
     artists
   }
 }`
+export const GET_SHOPPING_CART = gql`
+query ShoppingCart {
+  shoppingCart {
+    id
+    name
+    venue
+    location
+    date
+    photo
+    artists
+  }
+}`

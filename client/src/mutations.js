@@ -12,6 +12,16 @@ mutation deleteconcert($deleteconcertId: ID!) {
   }
 }
 `;
+export const addcartitem = gql`
+mutation addcartitem($input: CartInput!) {
+  addcartitem(input: $input) {
+    success
+    Errors {
+      message
+    }
+  }
+}
+`;
 
 
 

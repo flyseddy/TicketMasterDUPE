@@ -1,9 +1,13 @@
 import { Concert } from "./model.js";
+import { ShoppingCartItem } from "./model.js";
 
 export const resolvers = {
     Query: {
         concert: async (_, { id }) => Concert.findByPk(id),
         concerts: async () => await Concert.findAll(),
+        // Shopping Cart Queries
+        shoppingCartItem: async(_, { id }) => ShoppingCartItem.findByPk(id),
+        shoppingCart: async() => await ShoppingCartItem.findAll()
     },
 
     Mutation: {
@@ -16,7 +20,16 @@ export const resolvers = {
         return {
           success: true,
         };
-
+      },
+      addcartitem: async (_, { input }) => {
+          await ShoppingCartItem.create({
+              ...input,
+              complete: false,
+          });
+          return {
+              success: true,
+              Errors:null
+          };
+      },
     }
-}
 };

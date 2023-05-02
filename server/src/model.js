@@ -5,7 +5,24 @@ const sequelize = new Sequelize("sqlite:../data/database.sqlite");
 
 class Concert extends Model {}
 
+class ShoppingCartItem extends Model {}
+
 Concert.init(
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    name: DataTypes.TEXT,
+    venue:DataTypes.TEXT,
+    artists: DataTypes.TEXT,
+    date: DataTypes.TEXT,
+    location: DataTypes.TEXT,
+    photo: DataTypes.TEXT,
+  },
+  {
+    sequelize,
+  }
+);
+
+ShoppingCartItem.init(
   {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: DataTypes.TEXT,
@@ -30,4 +47,4 @@ await Concert.bulkCreate(
   })
 );
 
-export { Concert };
+export { Concert, ShoppingCartItem };

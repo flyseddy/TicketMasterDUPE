@@ -1,12 +1,32 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { GET_CONCERT } from "./queries";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { GET_CONCERT, GET_SHOPPING_CART } from "./queries";
 import Navbar from "./navbar";
+import { addcartitem } from "./mutations";
 
 export const ConcertDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [addProductToCart] = useMutation(addcartitem, {
+    variables: {
+      input: {
+        id: location.state.id,
+        name:location.state.name,
+        venue:location.state.venue,
+        artists:location.state.artists,
+        date: location.state.date,
+        location: location.state.location,
+        photo: location.state.photo
+      }
+    },
+    onCompleted: (data, options) => {
+        console.log(data, options)
+    }
+  });
 
   const { data, loading, error } = useQuery(GET_CONCERT, {
     variables: { concertId: id },
@@ -17,7 +37,7 @@ export const ConcertDetail = () => {
   if (loading) return "loading...";
 
   const concert = data.concert;
-  console.log(concert);
+
   return (
     <>
    <Navbar />
@@ -30,8 +50,8 @@ export const ConcertDetail = () => {
         <Typography><strong>Date</strong>: {concert.date}</Typography>
         <Typography><strong>Location</strong>: {concert.location}</Typography>
         <Typography><strong>Venue</strong>: {concert.venue}</Typography>
-        <Link to={`/concertDetail/edit/${id}`} state={{name: concert.name,artists:concert.artists, date: concert.date, photo: concert.photo, lcoation:concert.location}}>
-          <Button>Add to Cart</Button>
+        <Link to={`/shoppingCart`}>
+          <Button onClick={() => addProductToCart()}>Add to Cart</Button>
         </Link>
       </Grid>
 

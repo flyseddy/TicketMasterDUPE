@@ -5,6 +5,8 @@ export const typeDefs = gql`
   type Query {
     concerts: [Concert]
     concert(id:ID!): Concert!
+    shoppingCart: [ShoppingCartItem]
+    shoppingCartItem(id:ID!): ShoppingCartItem!
   }
 
   type Error {
@@ -27,7 +29,28 @@ export const typeDefs = gql`
     photo: String!
   }
 
+  type ShoppingCartItem {
+    id: ID!
+    name: String!
+    venue:String!
+    artists: String!
+    date: String!
+    location: String!
+    photo: String!
+  }
+
+  input CartInput {
+    id: ID!
+    name: String!
+    venue:String!
+    artists: String!
+    date: String!
+    location: String!
+    photo: String!
+  }
+
   type Mutation {
+    addcartitem(input: CartInput!): BaseResponse
     deleteconcert(id: ID!): BaseResponse
   }
   
