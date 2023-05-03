@@ -9,12 +9,12 @@ import { useMutation } from "@apollo/client";
 
 
 export const ConcertCard = ({ concert }) => {
-  const { id, name, venue, artists, date, location, photo } = concert;
+  const { id, name, venue, artists, date, location, photo, price } = concert;
 
   return (
     <>
     <Card>
-    <Link to={`/concertDetail/${id}`} state={{id: id, name: name,venue:venue, artists: artists, date: date, location:location, photo: photo}}>
+    <Link to={`/concertDetail/${id}`} state={{id: id, name: name,venue:venue, artists: artists, date: date, location:location, photo: photo, price:price}}>
     {/* <CardContainer> */}
       <CardContent>
         <CardImageContainer>

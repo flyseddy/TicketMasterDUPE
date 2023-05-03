@@ -20,7 +20,8 @@ export const ConcertDetail = () => {
         artists:location.state.artists,
         date: location.state.date,
         location: location.state.location,
-        photo: location.state.photo
+        photo: location.state.photo,
+        price: location.state.price
       }
     },
     onCompleted: (data, options) => {
@@ -52,6 +53,7 @@ export const ConcertDetail = () => {
         <Typography><strong>Date</strong>: {concert.date}</Typography>
         <Typography><strong>Location</strong>: {concert.location}</Typography>
         <Typography><strong>Venue</strong>: {concert.venue}</Typography>
+        <Typography><strong>Price</strong>: ${concert.price}</Typography>
         <Link to={`/shoppingCart`}>
           <Button onClick={() => addProductToCart()}>Add to Cart</Button>
         </Link>

@@ -17,12 +17,18 @@ export const ShoppingCart = () => {
 
   if (error) return `Error! ${error.message}`;
 
-  console.log(data.shoppingCart);
+  //console.log(data.shoppingCart);
+  let total_price = 0;
+
+  for (let i = 0; i < data.shoppingCart.length; i++) {
+    total_price += data.shoppingCart[i].price;
+  } 
 
   return (
     <>
     <Navbar />
     <h1>Shopping Cart</h1>
+    <h2>Total: ${total_price}</h2>
     <Grid container spacing={2} marginTop={2}>
       {
       data.shoppingCart.map((concert) => (

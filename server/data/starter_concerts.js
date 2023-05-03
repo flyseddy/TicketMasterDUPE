@@ -6,7 +6,8 @@ const concerts = [
     artists: "SZA",
     date:"October 1st",
     location:"Newark, NJ",
-    photo:"https://www.iconvsicon.com/wp-content/uploads/2022/12/SZA-SOS-North-American-Tour-Viktor-H-2023-featured.jpg"
+    photo:"https://www.iconvsicon.com/wp-content/uploads/2022/12/SZA-SOS-North-American-Tour-Viktor-H-2023-featured.jpg",
+    price: 200
   },
   {
     id: "concert2",
@@ -15,7 +16,8 @@ const concerts = [
     artists: "Drake and 21 Savage",
     date:"July 5th",
     location:"Chicago, IL",
-    photo:"https://www.coca-colacompany.com/content/dam/journey/us/en/articles/mobile/drake-all-blur-tour.jpg"
+    photo:"https://www.coca-colacompany.com/content/dam/journey/us/en/articles/mobile/drake-all-blur-tour.jpg",
+    price: 180
   },
   {
     id: "concert3",
@@ -24,7 +26,8 @@ const concerts = [
     artists: "Blackpink",
     date:"August 22th",
     location:"San Francisco, CA",
-    photo:"https://aegwebprod.blob.core.windows.net/content/blackpink-stadium-tour/non-localized-mobile.jpg"
+    photo:"https://aegwebprod.blob.core.windows.net/content/blackpink-stadium-tour/non-localized-mobile.jpg",
+    price: 160
   },
   {
     id: "concert4",
@@ -33,7 +36,8 @@ const concerts = [
     artists: "Bryson Tiller",
     date:"May 3rd",
     location:"Anaheim, CA",
-    photo:"https://i0.wp.com/www.iconvsicon.com/wp-content/uploads/2023/03/Bryson-Tiller-2023.png?fit=1600%2C900&ssl=1"
+    photo:"https://i0.wp.com/www.iconvsicon.com/wp-content/uploads/2023/03/Bryson-Tiller-2023.png?fit=1600%2C900&ssl=1",
+    price: 150
   },
   {
     id: "concert5",
@@ -42,7 +46,8 @@ const concerts = [
     artists: "Jordan Ward",
     date:"May 6th",
     location:"Washington, DC",
-    photo:"https://www.jordanalexward.com/files/2023/03/Jordan-Ward_-FORWARD_-Tour-Poster_1920x1080-1-compressed.jpg"
+    photo:"https://www.jordanalexward.com/files/2023/03/Jordan-Ward_-FORWARD_-Tour-Poster_1920x1080-1-compressed.jpg",
+    price: 135
   }
 ];
 

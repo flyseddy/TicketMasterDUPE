@@ -16,6 +16,7 @@ Concert.init(
     date: DataTypes.TEXT,
     location: DataTypes.TEXT,
     photo: DataTypes.TEXT,
+    price: DataTypes.FLOAT,
   },
   {
     sequelize,
@@ -31,6 +32,7 @@ ShoppingCartItem.init(
     date: DataTypes.TEXT,
     location: DataTypes.TEXT,
     photo: DataTypes.TEXT,
+    price: DataTypes.FLOAT,
   },
   {
     sequelize,

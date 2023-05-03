@@ -27,6 +27,7 @@ export const typeDefs = gql`
     date: String!
     location: String!
     photo: String!
+    price: Float!
   }
 
   type ShoppingCartItem {
@@ -37,6 +38,7 @@ export const typeDefs = gql`
     date: String!
     location: String!
     photo: String!
+    price: Float!
   }
 
   input CartInput {
@@ -47,6 +49,7 @@ export const typeDefs = gql`
     date: String!
     location: String!
     photo: String!
+    price: Float!
   }
 
   type Mutation {

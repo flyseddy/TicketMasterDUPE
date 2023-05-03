@@ -10,6 +10,7 @@ query Concerts {
     date
     photo
     artists
+    price
   }
 }`
 export const GET_CONCERT = gql`
@@ -22,6 +23,7 @@ query Concert($concertId: ID!) {
     date
     photo
     artists
+    price
   }
 }`
 export const GET_SHOPPING_CART = gql`
@@ -34,5 +36,6 @@ query ShoppingCart {
     date
     photo
     artists
+    price
   }
 }`
