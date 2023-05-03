@@ -52,6 +52,7 @@ export const typeDefs = gql`
   type Mutation {
     addcartitem(input: CartInput!): BaseResponse
     deleteconcert(id: ID!): BaseResponse
+    deleteshoppingcartitem(id:ID!): BaseResponse
   }
   
 `;

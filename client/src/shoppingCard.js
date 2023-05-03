@@ -2,19 +2,34 @@ import React, {useState} from 'react';
 import styled from '@emotion/styled';
 import { blue, green, grey, pink } from '@mui/material/colors';
 import { IconButton, CardActions, Card, Dialog, DialogActions, DialogContent, DialogTitle, Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Delete } from '@mui/icons-material';
-import { deleteconcert } from './mutations';
+import { deleteshoppingcartitem } from './mutations';
 import { useMutation } from "@apollo/client";
 
 
-export const ConcertCard = ({ concert }) => {
+export const ShoppingCard = ({ concert }) => {
   const { id, name, venue, artists, date, location, photo } = concert;
+
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
+  const [deleteConcert, deleteResult] = useMutation(deleteshoppingcartitem, {
+    variables: { deleteshoppingcartitemId: id },
+    refetchQueries: ["concerts"],
+    onCompleted: () => {
+      setConfirmDelete(false);
+      window.location.reload();
+    },
+  });
+
+  const handleDelete = async () => {
+    await deleteConcert();
+    setConfirmDelete(false);
+  };
 
   return (
     <>
     <Card>
-    <Link to={`/concertDetail/${id}`} state={{id: id, name: name,venue:venue, artists: artists, date: date, location:location, photo: photo}}>
     {/* <CardContainer> */}
       <CardContent>
         <CardImageContainer>
@@ -29,8 +44,30 @@ export const ConcertCard = ({ concert }) => {
           </CardFooter> */}
         </CardBody>
       </CardContent>
-      </Link>
+
+
+      <CardActions>
+      <IconButton onClick = {() => setConfirmDelete(true)}>
+        <Delete/>
+      </IconButton>
+      </CardActions>
       </Card>
+      <Dialog open={confirmDelete} onClose={() => setConfirmDelete(false)}>
+      <DialogTitle>Confirm Delete</DialogTitle>
+      <DialogContent>
+        <Typography>
+          Are you sure you wish to delete '{name}'?
+        </Typography>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setConfirmDelete(false)}>
+          Cancel
+        </Button>
+        <Button onClick={() => handleDelete()}>
+          Confirm
+        </Button>
+      </DialogActions>
+    </Dialog>
     {/* </CardContainer> */}
     </>
   );

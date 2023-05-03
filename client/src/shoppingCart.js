@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from "@apollo/client";
-import { ConcertCard } from './concert-card';
+import { ShoppingCard } from './shoppingCard';
 import { Grid } from '@mui/material'
 import Navbar from './navbar';
 import { GET_SHOPPING_CART } from './queries';
@@ -21,12 +21,13 @@ export const ShoppingCart = () => {
 
   return (
     <>
+    <Navbar />
     <h1>Shopping Cart</h1>
     <Grid container spacing={2} marginTop={2}>
       {
       data.shoppingCart.map((concert) => (
         <Grid item key={concert.id} xs={12} md={3} >
-          <ConcertCard concert={concert}/>
+          <ShoppingCard concert={concert}/>
           </Grid>
       ))
     }

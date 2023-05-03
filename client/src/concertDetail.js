@@ -25,6 +25,7 @@ export const ConcertDetail = () => {
     },
     onCompleted: (data, options) => {
         console.log(data, options)
+        window.location.reload();
     }
   });
 
@@ -47,6 +48,7 @@ export const ConcertDetail = () => {
         <Typography variant="h5">{concert.name}</Typography>
         <br></br>
         <Typography>{concert.bio}</Typography>
+        <Typography><strong>Artists</strong>: {concert.artists}</Typography>
         <Typography><strong>Date</strong>: {concert.date}</Typography>
         <Typography><strong>Location</strong>: {concert.location}</Typography>
         <Typography><strong>Venue</strong>: {concert.venue}</Typography>

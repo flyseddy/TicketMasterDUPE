@@ -23,9 +23,27 @@ const concerts = [
     venue:"Oracle Park",
     artists: "Blackpink",
     date:"August 22th",
-    location:"San Francisco",
+    location:"San Francisco, CA",
     photo:"https://aegwebprod.blob.core.windows.net/content/blackpink-stadium-tour/non-localized-mobile.jpg"
   },
+  {
+    id: "concert4",
+    name:"Back and I'm Better Tour",
+    venue:"House of Blues",
+    artists: "Bryson Tiller",
+    date:"May 3rd",
+    location:"Anaheim, CA",
+    photo:"https://i0.wp.com/www.iconvsicon.com/wp-content/uploads/2023/03/Bryson-Tiller-2023.png?fit=1600%2C900&ssl=1"
+  },
+  {
+    id: "concert5",
+    name:"Tourward 23",
+    venue:"Songbyrd Music House and Record Cafe",
+    artists: "Jordan Ward",
+    date:"May 6th",
+    location:"Washington, DC",
+    photo:"https://www.jordanalexward.com/files/2023/03/Jordan-Ward_-FORWARD_-Tour-Poster_1920x1080-1-compressed.jpg"
+  }
 ];
 
 export {concerts}

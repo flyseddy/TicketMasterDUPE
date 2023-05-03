@@ -21,6 +21,16 @@ export const resolvers = {
           success: true,
         };
       },
+      deleteshoppingcartitem: async (_, { id }) => {
+        const record = await ShoppingCartItem.findByPk(id);
+        if (!record) {
+          throw new Error(`Record with id ${id} was not found.`);
+        }
+        await record.destroy();
+        return {
+          success: true,
+        };
+      },
       addcartitem: async (_, { input }) => {
           await ShoppingCartItem.create({
               ...input,
